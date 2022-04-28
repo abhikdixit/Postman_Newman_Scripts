@@ -1,2 +1,1 @@
-cd Newman_Execution_Scripts
-newman run Jsonplaceholder.postman_collection.json --environment  "JSON_PLACE_Holder.postman_environment.json" -r cli,html
+newman run https://www.getpostman.com/collections/656ef9198f7123c77959
