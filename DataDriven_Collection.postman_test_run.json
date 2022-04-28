@@ -1,0 +1,64 @@
+{
+	"id": "7995b50d-a3ed-48ba-a434-9a9d69d260c8",
+	"name": "DataDriven_Collection",
+	"timestamp": "2022-04-28T10:55:47.396Z",
+	"collection_id": "8150758-90013022-9c7c-41dd-9759-d30490c71827",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 6,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "48942376-f4ab-40e9-afca-b07fcbc65cef",
+			"name": "Register_User_DataDriven_CSV_File",
+			"time": 357,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Your test name ": true,
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Your test name ": {
+					"pass": 3,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 3,
+					"fail": 0
+				}
+			},
+			"times": [
+				329,
+				321,
+				357
+			],
+			"allTests": [
+				{
+					"Your test name ": true,
+					"Status code is 201": true
+				},
+				{
+					"Your test name ": true,
+					"Status code is 201": true
+				},
+				{
+					"Your test name ": true,
+					"Status code is 201": true
+				}
+			]
+		}
+	],
+	"count": 3,
+	"totalTime": 1007,
+	"collection": {
+		"requests": [
+			{
+				"id": "48942376-f4ab-40e9-afca-b07fcbc65cef",
+				"method": "POST"
+			}
+		]
+	}
+}

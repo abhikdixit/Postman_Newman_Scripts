@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "3715076c-67de-422b-945a-bbadefb34e11",
+		"name": "Address",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create or Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    // Parse JSON value from Body\r",
+							"    var jsonData = pm.response.json();\r",
+							"    // Set the Global variable called Token and assign the value\r",
+							"    pm.globals.set(\"token\",jsonData.access_token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grant_type\": \"password\",\n    \"username\": \"priya@spree.com\",\n    \"password\": \"spree123\"\n}"
+				},
+				"url": {
+					"raw": "https://demo.spreecommerce.org/spree_oauth/token",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"spree_oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Verify First name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.attributes.firstname).to.eql(\"Kumar\");",
+							"    pm.expect(jsonData.data.attributes.lastname).to.eql(\"Dixit\");",
+							"    pm.globals.set(\"address_id\",jsonData.data.id);",
+							"",
+							"    //pm.globals.set(\"variable_key\", \"variable_value\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address\": {\n        \"firstname\": \"Kumar\",\n        \"lastname\": \"Dixit\",\n        \"company\": \"Paper Street Soap Co.\",\n        \"address1\": \"BTM Bangalore\",\n        \"address2\": \"3nd Floor\",\n        \"city\": \"Qethesda\",\n        \"phone\": \"3488545445002\",\n        \"zipcode\": \"90210\",\n        \"state_name\": \"CA\",\n        \"country_iso\": \"US\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account/addresses",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all Addresses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account/addresses",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account",
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    \r",
+							"});\r",
+							"//postman.setNextRequest(\"List all Addresses\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"address\": {\r\n    \"firstname\": \"Test\",\r\n    \"lastname\": \"API\",\r\n    \"company\": \"ABC\",\r\n    \"address1\": \"Pune\",\r\n    \"address2\": \"1nd Floor\",\r\n    \"city\": \"Aethesda\",\r\n    \"phone\": \"34885493845002\",\r\n    \"zipcode\": \"90211\",\r\n    \"state_name\": \"CA\",\r\n    \"country_iso\": \"US\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account/addresses/{{address_id}}",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account",
+						"addresses",
+						"{{address_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account/addresses/{{address_id}}",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account",
+						"addresses",
+						"{{address_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

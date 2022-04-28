@@ -1,0 +1,103 @@
+{
+	"id": "909b33c5-b26d-451f-a42e-8a4436af327d",
+	"name": "Welcome to Spree Commerce API Reference!",
+	"allTests": [],
+	"timestamp": "2022-01-20T03:03:58.525Z",
+	"collection_id": "4e4279fa-b4cd-40d5-b42d-f860a4483529",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "4e4279fa-b4cd-40d5-b42d-f860a4483529",
+		"name": "Welcome to Spree Commerce API Reference!",
+		"description": "Spree is a modular, API-first headless e-commerce platform for global brands.\r\n\r\nIf you're new to Spree, please check out Getting started tutorial.\r\n\r\n🎨 Storefront API\r\nModern and lightweight REST API based on JSON API schema\r\nDesigned for building Storefronts, mobile apps and POS\r\nJavaScript / TypeScript SDK available!\r\nNext.js Commerce storefront available!\r\nVue Storefront 2 storefront available!\r\n💻 Platform API (Developer Preview)\r\nOAuth 2.0 authentication\r\ndesigned for building application to application integration (warehouse management systems, ERPs, etc)\r\npermission sets based access to resources\r\naccess any resource on the Spree platform and perform any action\r\n🚀 Webhooks\r\nWebhooks and zapier integration coming soon!\r\n\r\n🔜 GraphQL\r\nGraphQL support is coming soon!\r\n\r\n🤝 Contact us\r\nDidn't found what you're looking for?\r\n\r\nGo ahead and contact us by email.",
+		"auth": null,
+		"events": null,
+		"variables": null,
+		"order": [
+			"bafba4d6-ca71-4f74-9c90-0943a27522d1",
+			"cdb72e23-0b6f-42c7-bd48-03de7ff8ba0c"
+		],
+		"folders_order": [],
+		"owner": "8150758",
+		"favorite": false
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [
+		{
+			"key": "url",
+			"value": "https://jsonplaceholder.typicode.com",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "345a70de-fce8-4ad1-8901-286442b4b1ee",
+			"enabled": true
+		},
+		{
+			"key": "uuid",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"results": [
+		{
+			"name": "https://demo.spreecommerce.org/api/v2/storefront/account",
+			"id": "bafba4d6-ca71-4f74-9c90-0943a27522d1",
+			"url": "https://demo.spreecommerce.org/api/v2/storefront/account",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden",
+				"detail": {
+					"name": "Forbidden",
+					"detail": "The request was a legal request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"1372"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "1372",
+			"totalRequestTime": "1372",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 1372,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "https://demo.spreecommerce.org/api/v2/storefront/account",
+			"id": "bafba4d6-ca71-4f74-9c90-0943a27522d1",
+			"url": "https://demo.spreecommerce.org/api/v2/storefront/account",
+			"time": "2022-01-20T03:03:58.525Z",
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden",
+				"detail": {
+					"name": "Forbidden",
+					"detail": "The request was a legal request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "ttps://demo.spreecommerce.org/api/v2/storefront/account",
+			"id": "cdb72e23-0b6f-42c7-bd48-03de7ff8ba0c",
+			"url": "ttps://demo.spreecommerce.org/api/v2/storefront/account",
+			"time": "2022-01-20T03:03:58.525Z",
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}

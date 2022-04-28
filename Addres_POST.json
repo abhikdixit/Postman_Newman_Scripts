@@ -1,0 +1,44 @@
+[
+{
+  "address": {
+    "firstname": "Test1",
+    "lastname": "API1",
+    "company": "Paper Street Soap Co.",
+    "address1": "775 Old Georgetown Road",
+    "address2": "3nd Floor",
+    "city": "Pune",
+    "phone": "3488545445002",
+    "zipcode": "90210",
+    "state_name": "CA",
+    "country_iso": "US"
+  }
+},
+{
+  "address": {
+    "firstname": "Test2",
+    "lastname": "API2",
+    "company": "Paper Street Soap Co.",
+    "address1": "775 Old Georgetown Road",
+    "address2": "3nd Floor",
+    "city": "Pune",
+    "phone": "3488545445002",
+    "zipcode": "90210",
+    "state_name": "CA",
+    "country_iso": "US"
+  }
+},
+{
+  "address": {
+    "firstname": "Test3",
+    "lastname": "API3",
+    "company": "Paper Street Soap Co.",
+    "address1": "775 Old Georgetown Road",
+    "address2": "3nd Floor",
+    "city": "Pune",
+    "phone": "3488545445002",
+    "zipcode": "90210",
+    "state_name": "CA",
+    "country_iso": "US"
+  }
+}
+]

@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "a1e09a57-c120-484c-ac3b-557879f437cf",
+		"name": "Countries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrieve a Country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e925cfcf-470e-427f-a9f2-90f7865779d8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Check if user with id is 99\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.id).to.eql(\"99\");\r",
+							"});\r",
+							"pm.test(\"Check if user with id is India\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.attributes.iso_name).to.eql(\"INDIA\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/countries/ind",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"countries",
+						"ind"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DataDrivenTest_Using_CSV_File",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "89b310b0-a7f2-489b-a7c5-d5e2f1a36a5e",
+						"exec": [
+							"//pm.collectionVariables.get(\"CountryName\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/countries?id={CountryName}",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"countries"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{CountryName}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Default_Country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/countries/default",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"countries",
+						"default"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

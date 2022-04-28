@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "69ed6867-a35f-475c-88f0-605a68a708d1",
+		"name": "Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create or Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7ad7b1c4-ff6c-4dde-b253-4036d95005c3",
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    // Parse JSON value from Body\r",
+							"    var jsonData = pm.response.json();\r",
+							"    // Set the Global variable called Token and assign the value\r",
+							"    pm.globals.set(\"token\",jsonData.access_token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"grant_type\": \"password\",\n    \"username\": \"kumar@spree.org\",\n    \"password\": \"spree1234\"\n}"
+				},
+				"url": {
+					"raw": "https://demo.spreecommerce.org/spree_oauth/token",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"spree_oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve an Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c01b5a90-19d8-4efb-9f74-60de267484a0",
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"kumar@spree.org\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Your email id\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.attributes.email).to.eql(\"kumar@spree.org\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify email address\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.data.attributes.email).to.eql(\"kumar@spree.org\");\r",
+							"     pm.expect(jsonData.data.id).to.eql(\"547\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": {\r\n    \"email\": \"kumarapi12@spree.org\",\r\n    \"password\": \"spree123\",\r\n    \"password_confirmation\": \"spree123\",\r\n    \"public_metadata\": {\r\n      \"user_segment\": \"supplier\"\r\n    },\r\n    \"private_metadata\": {\r\n      \"has_abandoned_cart\": false\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an Account_422_StatusCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aebb1035-89d6-4625-ae44-29af351be5fa",
+						"exec": [
+							"pm.test(\"Status code is 422-For Invalid Condition\", function () {",
+							"    pm.response.to.have.status(422);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": {\r\n    \"email\": \"kumarapi@spree.org\",\r\n    \"password\": \"spree123\",\r\n    \"password_confirmation\": \"spree1234\",\r\n    \"public_metadata\": {\r\n      \"user_segment\": \"supplier\"\r\n    },\r\n    \"private_metadata\": {\r\n      \"has_abandoned_cart\": false\r\n    }\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://demo.spreecommerce.org/api/v2/storefront/account",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"spreecommerce",
+						"org"
+					],
+					"path": [
+						"api",
+						"v2",
+						"storefront",
+						"account"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
